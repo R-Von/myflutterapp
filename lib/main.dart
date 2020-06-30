@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ImageApp());
+}
+
+class ImageApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      title:'ImageDemo',
+      home:Scaffold(
+        body:Center(
+          child:Container(
+            child:new Image.network(
+              'http://img.zhuayu.live/upload/1544023667470931.png',
+              // scale:1.0
+              // fit:BoxFit.scaleDown,
+              color:Colors.greenAccent,
+              colorBlendMode: BlendMode.darken,
+              repeat: ImageRepeat.repeat,
+            ),
+            width:400.0,
+            height:300.0
+          )
+        )
+      )
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {

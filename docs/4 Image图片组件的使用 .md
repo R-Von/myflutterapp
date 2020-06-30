@@ -37,4 +37,22 @@ class MyApp extends StatelessWidget{
 ### fit方法 
 fit属性用以控制图片的拉伸和挤压 
 - BoxFit.fill 全图显示 图片会被拉伸
-- BoxFit.contain 全图显示
+- BoxFit.contain 全图显示 显示原比例  可能有空隙
+- BoxFit.cover 显示可能会拉伸 可能裁切 充满(图片充满整个容器 还不变形)
+- BoxFit.fitWidth 宽度充满(横向填充) 显示可能拉伸 也可能裁剪 
+- BoxFit.fitHeight 高度填充(竖向填充) 显示可能拉伸 也可能裁剪 
+- BoxFit.scaleDown 全图显示 
+
+### 图片的混合模式
+图片混合模式（colorBlendMode）和color属性配合使用 能让图片改变颜色 
+```
+child:new Image.network(
+  'http://img.zhuayu.live/upload/1544023667470931.png',
+  color:Colors.greenAccent,
+  colorBlendModel:BlendMode.darken
+)
+```
+### repeat图片重复
+- imageRepeat.repeat 横向纵向都进行重复 直到铺满整个画布
+- imageRepeat.repeatX 横向重复 纵向不重复
+- iamgeRepeat.repeatY 横向不重复 纵向重复
