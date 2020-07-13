@@ -1,31 +1,261 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(ImageApp());
-}
+// void main() {
+//   runApp(ListApps());
+// }
 
-class ImageApp extends StatelessWidget{
+void main () => runApp(GridImg());
+
+
+
+class GridImg extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return MaterialApp(
-      title:'ImageDemo',
-      home:Scaffold(
-        body:Center(
-          child:Container(
-            child:new Image.network(
-              'http://img.zhuayu.live/upload/1544023667470931.png',
-              // scale:1.0
-              // fit:BoxFit.scaleDown,
-              color:Colors.greenAccent,
-              colorBlendMode: BlendMode.darken,
-              repeat: ImageRepeat.repeat,
-            ),
-            width:400.0,
-            height:300.0
-          )
+      title:'List View Widget',
+      home: Scaffold(
+        appBar:new AppBar(title:new Text('Gride Image')),
+        body:GridView(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount:3,   
+            mainAxisSpacing:2.0,
+            crossAxisSpacing:2.0,
+            childAspectRatio: 0.7
+          ),
+          children: <Widget>[
+            new Image.network('http://img.justfun.live/upload/1549013575615871.jpg',fit:BoxFit.contain),
+            new Image.network('http://img.justfun.live/upload/1587376403292751.png',fit:BoxFit.fill),
+            new Image.network('http://img.justfun.live/upload/1586316275250981.png',fit:BoxFit.cover),
+            new Image.network('http://img.justfun.live/upload/1583145354136671.png',fit:BoxFit.cover),
+            new Image.network('http://img.justfun.live/upload/1537944207822371.png',fit:BoxFit.cover),
+            new Image.network('http://img.justfun.live/upload/157907630488441.png',fit:BoxFit.cover),
+            new Image.network('http://img.justfun.live/upload/1537944254524531.png',fit:BoxFit.cover),
+          ],
         )
+      ),
+    );
+  }
+} 
+
+
+
+class GridViews extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return new MaterialApp(
+      title:'Grid Views',
+      home:Scaffold(
+        //  appBar: new AppBar(title: new Text('Gride Views')),
+        appBar: new AppBar( title:new Text('Gride Views')),
+        body:GridView.count(
+          padding:const EdgeInsets.all(20.0),
+          crossAxisSpacing: 10.0,
+          crossAxisCount: 4,
+          children: <Widget>[
+            const Text('This is Fe',style:TextStyle(color:Colors.redAccent)),
+            const Text('HTML',style:TextStyle(color:Colors.orangeAccent)),
+            const Text('Css',style:TextStyle(color:Colors.yellowAccent)),
+            const Text('Js',style:TextStyle(color:Colors.greenAccent)),
+            const Text('Vue',style:TextStyle(color:Colors.blueAccent)),
+            const Text('React',style:TextStyle(color:Colors.purpleAccent)),
+            const Text('Angular',style:TextStyle(color:Colors.pinkAccent)), 
+          ],
+          )
       )
     );
+  }
+}
+ 
+
+
+
+// void main ()=> runApp(ListsViews(
+//   items:new List<String>.generate(1000, (i) => 'Item $i')
+// ));
+
+class ListsViews extends StatelessWidget {
+  final List<String> items;
+  ListsViews({Key key, @required this.items}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'List View Widget',
+        home: Scaffold(
+          body: new ListView.builder(
+              itemCount: items.length,
+              itemBuilder: (context, index) {
+                return new ListTile(
+                  title: new Text('${items[index]}'),
+                );
+              }
+            )
+          )
+        );
+  }
+}
+
+class ListApps extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'List Apps',
+        home: Scaffold(
+            body: Center(child: Container(height: 200.0, child: MyList()))));
+  }
+}
+
+class MyList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      scrollDirection: Axis.horizontal,
+      children: [
+        new Container(
+            width: 180.0,
+            color: Colors.redAccent,
+            child: new Text('1',
+                style: TextStyle(fontSize: 80.0, color: Colors.white)),
+            alignment: Alignment.center),
+        new Container(
+            width: 180.0,
+            color: Colors.orangeAccent,
+            child: new Text('2',
+                style: TextStyle(fontSize: 80.0, color: Colors.white)),
+            alignment: Alignment.center),
+        new Container(
+            width: 180.0,
+            color: Colors.yellowAccent,
+            child: new Text('3',
+                style: TextStyle(fontSize: 80.0, color: Colors.white)),
+            alignment: Alignment.center),
+        new Container(
+            width: 180.0,
+            color: Colors.greenAccent,
+            child: new Text('4',
+                style: TextStyle(fontSize: 80.0, color: Colors.white)),
+            alignment: Alignment.center),
+        new Container(
+            width: 180.0,
+            color: Colors.blueAccent,
+            child: new Text('5',
+                style: TextStyle(fontSize: 80.0, color: Colors.white)),
+            alignment: Alignment.center),
+      ],
+    );
+  }
+}
+
+class ListViews extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'List View Widget',
+        home: Scaffold(
+          body: Center(
+            child: Container(
+                height: 200.0,
+                child:
+                    new ListView(scrollDirection: Axis.horizontal, children: <
+                        Widget>[
+                  new Container(
+                      width: 180.0,
+                      color: Colors.lightBlue,
+                      child: new Text('1',
+                          style:
+                              TextStyle(fontSize: 40.0, color: Colors.white)),
+                      alignment: Alignment.center),
+                  new Container(
+                      width: 180.0,
+                      color: Colors.amber,
+                      child: new Text('2',
+                          style:
+                              TextStyle(fontSize: 40.0, color: Colors.white)),
+                      alignment: Alignment.center),
+                  new Container(
+                      width: 180.0,
+                      color: Colors.deepOrange,
+                      child: new Text('3',
+                          style:
+                              TextStyle(fontSize: 40.0, color: Colors.white)),
+                      alignment: Alignment.center),
+                  new Container(
+                      width: 180.0,
+                      color: Colors.deepPurpleAccent,
+                      child: new Text('4',
+                          style:
+                              TextStyle(fontSize: 40.0, color: Colors.white)),
+                      alignment: Alignment.center)
+                ])),
+          ),
+        ));
+  }
+}
+
+class ListApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'ListView',
+        home: Scaffold(
+            appBar: new AppBar(title: new Text('List View Widget')),
+            // body:Center(
+            //   child:Container(
+            //     child:new Text('List View Text')
+            //   )
+            // )
+            body: Container(
+              child: Container(
+                child: new ListView(
+                  children: <Widget>[
+                    new Image.network(
+                      'http://img.justfun.live/upload/15850279128663312.png',
+                      scale: 2,
+                    ),
+                    new Image.network(
+                      'http://img.justfun.live/upload/15850279144624323.png',
+                      scale: 2,
+                    ),
+                    new Image.network(
+                      'http://img.justfun.live/upload/15850279160175134.png',
+                      scale: 2,
+                    ),
+                    new ListTile(
+                        leading: new Icon(Icons.access_time),
+                        title: new Text('access_titme')),
+                    new ListTile(
+                        leading: new Icon(Icons.access_time),
+                        title: new Text('access_titme')),
+                    new ListTile(
+                        leading: new Icon(Icons.access_time),
+                        title: new Text('access_titme')),
+                    new ListTile(
+                        leading: new Icon(Icons.access_time),
+                        title: new Text('access_titme')),
+                  ],
+                ),
+              ),
+            )));
+  }
+}
+
+class ImageApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'ImageDemo',
+        home: Scaffold(
+            body: Center(
+                child: Container(
+                    child: new Image.network(
+                      'http://img.zhuayu.live/upload/1544023667470931.png',
+                      // scale:1.0
+                      // fit:BoxFit.scaleDown,
+                      color: Colors.greenAccent,
+                      colorBlendMode: BlendMode.darken,
+                      repeat: ImageRepeat.repeat,
+                    ),
+                    width: 400.0,
+                    height: 300.0))));
   }
 }
 
