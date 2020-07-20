@@ -16,6 +16,7 @@ class BasicColumn extends StatelessWidget{
           title:new Text('Column Layout')
         ),
         body:new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children:<Widget>[
             new Text('Red',style: TextStyle(color:Colors.redAccent),),
             new Text('Orange',style: TextStyle(color:Colors.orangeAccent),),
